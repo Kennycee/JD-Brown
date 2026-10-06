@@ -52,6 +52,9 @@ h1>span,h2>span{color:#d39b79;font-style:italic}
 .ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;border-radius:3px;pointer-events:none}
 .fw{display:flex;justify-content:center;gap:12px;margin-top:10px;color:#987964;font:italic 13px "Playfair Display",serif}
 .foot{padding:20px 0 35px;color:#8a705f;font-size:10px;letter-spacing:.08em;text-align:center}.foot b{color:var(--rose);font-weight:400}
+.mus{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:40;padding:10px 16px;border:1px solid rgba(235,197,157,.4);border-radius:999px;background:rgba(36,22,16,.88);color:var(--cream);font-size:13px;cursor:pointer;backdrop-filter:blur(6px);box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.mus.hint{animation:pl 1.6s infinite}
+.mus.on{padding:10px 14px;font-size:16px}
 .ov{position:fixed;inset:0;z-index:50;background:rgba(13,8,7,.96);opacity:0;transition:opacity .4s;cursor:zoom-out}
 .ov[hidden]{display:none}
 .ov img{position:fixed;object-fit:contain;border-radius:8px;box-shadow:0 0 90px rgba(160,91,60,.3);transition:all .45s cubic-bezier(.2,.8,.2,1)}

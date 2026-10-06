@@ -108,5 +108,20 @@ function typeMsg(){
   })();
 }
 new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.2}).observe(document.querySelector('.rv'));
+/* ---- background music: starts on her first tap, loops softly ---- */
+var au=new Audio('music.mp3'),started=false,mutedByUser=false,mb=$('mus');
+au.loop=true;au.volume=.45;au.preload='auto';
+function mset(){mb.className='mus'+(started?' on':' hint');mb.textContent=!started?'\uD83C\uDFB5 tap for music':(mutedByUser?'\uD83D\uDD07':'\uD83C\uDFB5')}
+function startMusic(e){
+  if(started||(e&&e.target===mb&&false))return;
+  var r=au.play();if(r&&r.then)r.then(function(){started=true;mutedByUser=false;mset()}).catch(function(){});else{started=true;mset()}
+}
+['click','touchend','keydown'].forEach(function(ev){addEventListener(ev,startMusic,{passive:true})});
+mb.addEventListener('click',function(){
+  if(!started)return;
+  mutedByUser=!mutedByUser;if(mutedByUser)au.pause();else au.play().catch(function(){});mset();
+});
+document.addEventListener('visibilitychange',function(){if(!started)return;if(document.hidden)au.pause();else if(!mutedByUser)au.play().catch(function(){})});
+au.addEventListener('error',function(){mb.hidden=true});
 tick();timer=setInterval(tick,1000);
 if(location.hash==='#preview')party();
